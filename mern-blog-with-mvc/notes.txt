@@ -1,0 +1,75 @@
+-frontend ve backend klasorlerini olusturdum. mkdir
+
+-gerekli dosya mimarsini olusturmak için içerideki klasorleri olusturdum
+
+-.env ve .gitignore dosyalarını olusturdum ve gerekli olacağını dusundum kısımları şimdiden ekledim.
+
+-npm init -y komutu ile backendde package.json dosyası olusturdum.
+
+-nodemon kurulumu yapıldı. sudo npm install -g nodemon
+
+-package.json dosyasına girip aşağıdaki gibi olacak şekilde düzenledim.
+
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+
+-express indirdim
+
+-server.js isimli ana dosyayı oluşturup nodemonu express dokumentasyonundaki basit baslangıc ile test ettim.
+
+const express = require('express')
+const app = express()
+
+app.get('/', function (req, res) {
+  res.send('Hello World')
+})
+
+app.listen(4000)
+
+-npm run dev server.js
+
+-dotenv indir
+-mongoose indir. (versiyon 6)
+-mongooseda kurdugun proje ve olustugun dbyi backende bagla ve test et
+
+-kullanacagın routeları ayarlamaya basla.
+-routeları yaz
+-model olustur bi tane
+-getlemeyi basarabiliyorsan bir tane create edeceğin controlleri olustur sonrasında onu getlemeyi basar.
+-bunu yaptıktan sonra aynı şekilde duzenleme ve silme yapma komutlarını yerlestir ve test et
+
+-su anda backend ve endpoint olarak, olusturma, goruntuleme, duzenleme ve silme yapabilen bir yapın var
+-bunları frontende entegre et. ve bu testleri frontend uzerinden gerceklestir.
+
+frontendi ayaga kaldır
+react router dom indirip header ile yapısını yerleştir.
+basit bir homepage yap blogların goruntulendiği yanına silmek için button ve eklemek icin form ekle.
+
+-son durumda bloglar eklenip silinebiliyor.
+
+-auth durumlarının backende eklenmesi. zaten aynı mantık oldugu için fazla değişiklik yapılmıyor
+
+-auth durumlarının frontende eklenmesi
+
+-auth konusundaki middleware eklenmesi
+
+--ekleme baska bir sayfadan yapılsın mesela.
+--
+
+// create new workout
+const createWorkout = async (req, res) => {
+  const {title, load, reps} = req.body
+
+
+  // add doc to db
+  try {
+    const user_id = req.user._id
+    const workout = await Workout.create({title, load, reps, user_id})
+    res.status(200).json(workout)
+  } catch (error) {
+    res.status(400).json({error: error.message})
+  }
+}
