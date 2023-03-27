@@ -6,6 +6,7 @@ const Blog = require('../models/blogModel')
 //import mongoose
 const mongoose = require('mongoose')
 
+
 //GET blogs
 const getBlogs = async (req, res) => {
 
@@ -57,6 +58,9 @@ const deleteBlog = async (req, res) => {
   
     if (!blog) {
       return res.status(400).json({error: 'No such blog'})
+    }
+    if (!req.user || blog.author !== req.user._id) {
+      return res.status(401).json({error: 'Unauthorized'});
     }
     //res.status(200).json(blog)
     res.status(200).json({ 

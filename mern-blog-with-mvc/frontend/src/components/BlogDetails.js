@@ -5,7 +5,9 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import { Link } from "react-router-dom";
 
+
 const BlogDetails = ({ blog }) => {
+  console.log(blog)
   const { dispatch } = useBlogsContext();
   const { user } = useAuthContext();
 

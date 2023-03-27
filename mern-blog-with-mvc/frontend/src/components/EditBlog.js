@@ -21,6 +21,9 @@ const WorkoutForm = () => {
       return;
     }
 
+
+    
+
     const blog = { title, content };
 
     const response = await fetch("/api/blogs", {

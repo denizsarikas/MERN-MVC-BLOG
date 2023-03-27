@@ -35,7 +35,7 @@ const Home = () => {
           <BlogDetails key={blog._id} blog={blog} />
         ))}
       </div>
-     <BlogForm />
+     {/* <BlogForm /> */}
     </div>
   )
 }
